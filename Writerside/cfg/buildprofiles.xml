@@ -1,0 +1,11 @@
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+
+    </variables>
+    <build-profile instance="instance_id"/>
+    <footer>
+        <copyright>Muhmad Omar 2023</copyright>
+        <social type="facebook" href="https://facebook.com/m7mmad.omar"/>
+    </footer>
+</buildprofiles>
