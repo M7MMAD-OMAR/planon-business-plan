@@ -4,7 +4,9 @@
 
 <instance-profile id="hi"
                   name="Business Plan"
-                  start-page="Default-topic.md">
+                  start-page="Introduction-topic.md">
 
-    <toc-element topic="Default-topic.md"/>
+    <toc-element topic="Introduction-topic.md"/>
+    <toc-element topic="Goals-topic.md"/>
+    <toc-element topic="EventConnector-topic.md"/>
 </instance-profile>
