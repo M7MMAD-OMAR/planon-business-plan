@@ -9,4 +9,6 @@
     <toc-element topic="Introduction-topic.md"/>
     <toc-element topic="Goals-topic.md"/>
     <toc-element topic="EventConnector-topic.md"/>
+    <toc-element topic="AWM-topic.md"/>
+    <toc-element topic="Tools-topic.md"/>
 </instance-profile>
