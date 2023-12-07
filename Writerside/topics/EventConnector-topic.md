@@ -68,27 +68,46 @@ graph RL
 1. `Processor`
 
 يقوم هذا الصف البرمجي بالتحقيق من IInboundMessageProcessor
-`public class Processor implements IInboundMessageProcessor { }`
+
+    public class Processor implements IInboundMessageProcessor { }  
+
 وهو المسؤول عن معالجة الرسائل الواردة
 
 يجب إنشاء هذه الدالة عند التحقيق
 
-`    
-@Override
-public void handleMessage(IInboundMessage inboundMessage, IInboundMessageProcessorContext processorContext) { }`
+    @Override
+    public void handleMessage(IInboundMessage inboundMessage, IInboundMessageProcessorContext processorContext) { } 
 
-     @param processorContext The processor context used for accessing the data service.
+`@param processorContext سياق المعالج المستخدم للوصول إلى خدمة البيانات.`
 
 2. `Transformer`
 
-`public class Transformer implements IInboundMessageTransformer { }`
+        public class Transformer implements IInboundMessageTransformer { }
 
+يوفر طريقة لتحويل الرسالة الواردة إلى كائن يتضمن التحويل تحليل رسالة واستخراج قيم محددة لإضافتها كحقول في "بلانون"
+استخدام
+استدعاء طريقة التحويل من خلال توفير نص الرسالة وبيانات تعريف الرسالة وسياق المحول. تقوم هذه الطريقة بتحليل رسالة
+واستخراج قيم محددة وإضافتها كحقول في الرسالة الواردة.
 
+يجب استخدام هذه الدالة عند التحقيق
 
+    @Override
+    public IInboundMessage transform(String messageBody, IInboundMessageMetadata messageMetadata,
+    IInboundMessageTransformerContext messageTransformerContext) throws MessageTransformationException { }
 
+3. `Transformer`
 
+        public class Transformer implements IOutboundMessageTransformer { }
 
+, يقوم بتحويل الرسائل الصادرة إلى رسائل خام صادرة (outbound raw messages). تتم هذه العملية بتطبيق تنفيذ الدالة transform
+المحققة من الواجهة IOutboundMessageTransformer.
 
+4. `Transmitter`
+
+        public class Transmitter implements IOutboundMessageTransmitter { }
+
+يتم استخدام هذا الصف البرمجي، المعروفة باسم **Transmitter**، لإعداد وإرسال الرسائل الصادرة إلى نظام خارجي. تحقق قائمة
+IOutboundMessageTransmitter أن الفئة تنفذ الطريقة send, والتي مقدمة للعمل بوصفها نقطة البداية لإرسال الرسالة الصادرة.
 
 
 
