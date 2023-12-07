@@ -3,12 +3,12 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="hi"
-                  name="Business Plan"
+                  name="Business Plan - Muhamd Omar"
                   start-page="Introduction-topic.md">
 
     <toc-element topic="Introduction-topic.md"/>
     <toc-element topic="Goals-topic.md"/>
+    <toc-element topic="Tools-topic.md"/>
     <toc-element topic="EventConnector-topic.md"/>
     <toc-element topic="AWM-topic.md"/>
-    <toc-element topic="Tools-topic.md"/>
 </instance-profile>

@@ -62,3 +62,36 @@ graph RL
             - `Transformer`
             - `Transmitter`
 - `config.json`
+
+### شرح الملفات
+
+1. `Processor`
+
+يقوم هذا الصف البرمجي بالتحقيق من IInboundMessageProcessor
+`public class Processor implements IInboundMessageProcessor { }`
+وهو المسؤول عن معالجة الرسائل الواردة
+
+يجب إنشاء هذه الدالة عند التحقيق
+
+`    
+@Override
+public void handleMessage(IInboundMessage inboundMessage, IInboundMessageProcessorContext processorContext) { }`
+
+     @param processorContext The processor context used for accessing the data service.
+
+2. `Transformer`
+
+`public class Transformer implements IInboundMessageTransformer { }`
+
+
+
+
+
+
+
+
+
+
+
+
+
