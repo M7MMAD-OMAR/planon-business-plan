@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       id="EventConnector-topic" title="موصل الحدث (Event Connector)">
+
+    <title>
+        موصل الحدث (Event Connector)
+    </title>
+    <p>هو أداة تقنية تستخدم لربط المعلومات والأحداث بين التطبيقات،
+        ويستخدم لتبادل البيانات والإشعارات بشكل آلي.
+        وعادةً ما يحتاج إلى استلام الرسائل الواردة وتحويلها ومعالجتها،
+        ويعتبر جزءًا من وحدات
+        <control>نظام تبادل المعلومات</control>
+        .
+    </p>
+
+    <code-block>يفضل فصل موصل الحدث عن المشروع الأساسي لعدة أسباب منها:
+        - فصل المسؤوليات الخاصة بالمشروع
+        - قابلية التوسعة وإعادة الإستخدام
+        - تبسيط عملية الإختبار والصيانة
+    </code-block>
+    <chapter title="عمل موصل الحدث">
+        <chapter title="الرسائل الواردة:">
+
+            <code-block lang="mermaid">
+                graph LR
+                A[Inbound]
+                A --&gt; B[Queue]
+                B --&gt; C[Transformation]
+                C --&gt; D[Queue]
+                D --&gt; E[Processing]
+
+            </code-block>
+            <list type="decimal">
+                <li>
+                    <control>الرسالة الواردة:</control>
+                    تستقبل الرسالة الواردة من مصدر خارجي.
+                </li>
+                <li>
+                    <control>قائمة الانتظار:</control>
+                    توضع الرسالة في قائمة الانتظار للمعالجة.
+                </li>
+                <li>
+                    <control>التحويل:</control>
+                    يتم تحويل الرسالة من تنسيقها الحالي إلى تنسيق يفهمه نظام &quot;بلانون&quot;.
+                </li>
+                <li>
+                    <control>قائمة الانتظار:</control>
+                    توضع الرسالة المحولة في قائمة الانتظار للمعالجة.
+                </li>
+                <li>
+                    <control>المعالجة:</control>
+                    يتم معالجة الرسالة المحولة وفقًا
+                    <control>للمنطق</control>
+                    و
+                    <control>نموذجات القرار</control>
+                    المحددة.
+                </li>
+                <li>
+                    <control>اتخاذ الإجراء:</control>
+                    يتم اتخاذ الإجراء المناسب وفقًا لنتائج المعالجة لـ &quot;بلانون&quot;.
+                </li>
+            </list>
+        </chapter>
+        <chapter title="الرسائل الصادرة:">
+
+            <code-block lang="mermaid">
+                graph RL
+                A[SX Context]
+                A --&gt; B[Queue]
+                B --&gt; C[Transformation]
+                C --&gt; D[Queue]
+                D --&gt; E[Transmission]
+                E --&gt; F[Target]
+
+            </code-block>
+            <list type="decimal">
+                <li>
+                    <control>السياق:</control>
+                    يتم إنشاء الرسالة الصادرة باستخدام سياق &quot;بلانون&quot;.
+                </li>
+                <li>
+                    <control>قائمة الانتظار:</control>
+                    تتم إضافة الرسالة الصادرة إلى قائمة الانتظار.
+                </li>
+                <li>
+                    <control>التحويل:</control>
+                    يتم تحويل الرسالة من تنسيق &quot;بلانون&quot; إلى تنسيق يفهمه النظام الخارجي.
+                </li>
+                <li>
+                    <control>قائمة الانتظار:</control>
+                    توضع الرسالة المحولة في قائمة الانتظار للإرسال.
+                </li>
+                <li>
+                    <control>الإرسال:</control>
+                    يتم إرسال الرسالة المحولة إلى النظام الخارجي.
+                </li>
+                <li>
+                    <control>الهدف:</control>
+                    يتم تسليم الرسالة إلى الهدف المحدد.
+                </li>
+            </list>
+        </chapter>
+    </chapter>
+    <chapter title="هيكلية موصل الحدث">
+        <list>
+            <li><code>src</code>
+                <list>
+                    <li><code>com.example</code>
+                        <list>
+                            <li><code>inbound</code>
+                                <list>
+                                    <li><code>Processor</code></li>
+                                    <li><code>Transformer</code></li>
+                                </list>
+                            </li>
+                            <li><code>outbound</code>
+                                <list>
+                                    <li><code>Transformer</code></li>
+                                    <li><code>Transmitter</code></li>
+                                </list>
+                            </li>
+                        </list>
+                    </li>
+                </list>
+            </li>
+            <li><code>config.json</code></li>
+        </list>
+    </chapter>
+    <chapter title="شرح الملفات">
+        <list type="decimal">
+            <li><code>Processor</code></li>
+        </list>
+        <p>يقوم هذا الصف البرمجي بالتحقيق من IInboundMessageProcessor</p>
+
+        <code-block>public class Processor implements IInboundMessageProcessor { }
+        </code-block>
+        <p>وهو المسؤول عن معالجة الرسائل الواردة</p>
+        <p>يجب إنشاء هذه الدالة عند التحقيق</p>
+
+        <code-block>@Override
+            public void handleMessage(IInboundMessage inboundMessage, IInboundMessageProcessorContext processorContext)
+            { }
+        </code-block>
+        <p><code>@param processorContext سياق المعالج المستخدم للوصول إلى خدمة البيانات.</code></p>
+        <list start="2" type="decimal">
+            <li>
+                <p><code>Transformer</code></p>
+
+                <code-block> public class Transformer implements IInboundMessageTransformer { }
+                </code-block>
+            </li>
+        </list>
+        <p>يوفر طريقة لتحويل الرسالة الواردة إلى كائن يتضمن التحويل تحليل رسالة واستخراج قيم محددة لإضافتها كحقول في
+            &quot;بلانون&quot;
+            استخدام
+            استدعاء طريقة التحويل من خلال توفير نص الرسالة وبيانات تعريف الرسالة وسياق المحول. تقوم هذه الطريقة بتحليل
+            رسالة
+            واستخراج قيم محددة وإضافتها كحقول في الرسالة الواردة.</p>
+        <p>يجب استخدام هذه الدالة عند التحقيق</p>
+
+        <code-block>@Override
+            public IInboundMessage transform(String messageBody, IInboundMessageMetadata messageMetadata,
+            IInboundMessageTransformerContext messageTransformerContext) throws MessageTransformationException { }
+        </code-block>
+        <list start="3" type="decimal">
+            <li>
+                <p><code>Transformer</code></p>
+
+                <code-block> public class Transformer implements IOutboundMessageTransformer { }
+                </code-block>
+            </li>
+        </list>
+        <p>, يحول الرسائل الصادرة إلى رسائل خام صادرة (outbound raw messages). تتم هذه العملية بتطبيق تنفيذ الدالة
+            transform
+            المحققة من الواجهة IOutboundMessageTransformer.</p>
+        <list start="4" type="decimal">
+            <li>
+                <p><code>Transmitter</code></p>
+
+                <code-block> public class Transmitter implements IOutboundMessageTransmitter { }
+                </code-block>
+            </li>
+        </list>
+        <p>يتم استخدام هذا الصف البرمجي، المعروفة باسم
+            <control>Transmitter</control>
+            ، لإعداد وإرسال الرسائل الصادرة إلى نظام خارجي. تحقق قائمة
+            IOutboundMessageTransmitter أن الفئة تنفذ الطريقة send, التي مقدمة للعمل بوصفها نقطة البداية لإرسال الرسالة
+            الصادرة.
+        </p>
+    </chapter>
+
+</topic>

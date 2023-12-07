@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       id="AWM-topic" title="AWM (Agile Workplace Management)">
+
+    <title>
+        AWM (Agile Workplace Management)
+    </title>
+    <p>هو اختصار
+        <control>لإدارة مكان العمل المرنة</control>
+        حيث يمكننا فحص الأماكن هل هي مشغولة
+        أم لا أو مثلا تحليل مواقع القاعات هل تتسع للموظفين ام لا
+    </p>
+    <chapter title="آلية العمل">
+        <p>يتم جلب البيانات من
+            <control>المستشعرات</control>
+            وتخزينها في
+            <control>موقع البيانات</control>
+            وبعدها يأتي
+            <control>محرك البيانات</control>
+            ويأخذها إلى
+            <control>موصل الحدث</control>
+            إما (سحب أو دفع)
+            وأخيرا تذهب إلى
+            <control>مكان العمل المرن</control>
+        </p>
+        <img src="awm_custom_managed.png" alt="awm custom managed" width="706" border-effect="line"/>
+    </chapter>
+    <chapter title="مفاهيم">
+        <list>
+            <li>
+                <p>
+                    <control>الموقع (Location):</control>
+                    يقصد به الموقع الذي يرتبط به الحساسات ويتم تجميع البيانات به لأن &quot;بلانون&quot; لا يأخذ معلومات
+                    من
+                    مستشعرات فردية بل أنه يأخذها بمجموعات من البيانات
+                </p>
+            </li>
+            <li>
+                <p>
+                    <control>محرك البيانات (Data Engin):</control>
+                    يحرك تبادل البيانات ويعالجها ويمكن تحديد الفاصل الزمني للإستقصاء
+                </p>
+            </li>
+            <li>
+                <p>
+                    <control>AWMDATAENGINADMIN</control>
+                    هذا المستخدم يوفر كلّما يتعلق بمكان العمل المرنة, يستخدم كحساب مستخدم للنظام ولا يستخدم لتسجيل
+                    الدخول
+                </p>
+            </li>
+            <li>
+                <p>Push, Pull استراتيجية النقل: يوجد طريقتين (السحب, الدفع)
+                    <control>بشكل أفتراضي هو السحب</control>
+                </p>
+            </li>
+            <li>
+                <p>
+                    <control>BO (Business Object)</control>
+                    هو كائن الأعمال حيث أنه يمكن لأي مستخدم الوصول لهم وتنفيذ إجراءات دون صلاحيات
+                </p>
+            </li>
+            <li>
+                <p>
+                    <control>Business Event</control>
+                    حدث العمل هو (تحديث, حذف, تعديل, ....)
+                </p>
+            </li>
+            <li>
+                <p>
+                    <control>Decision Model</control>
+                    نموذج القرار يمكن إنشاء قواعد قرار له ويتم اتخاذ الإجراء المناسب وفق الشروط التي تم استيفائها أو
+                    وفق نوع البيانات (يتم تنفيذ جميع قواعد القرار في النموذج بالتسلسل المحدد)
+                </p>
+            </li>
+            <li>
+                <p>TSI (Task Specific Interface) هي واجهة خاصة بالمهمات تحتوي على العديد من كائن الأعمال BO</p>
+            </li>
+            <li>
+                <p>
+                    <control>طبقة الإتصال</control>
+                    يجب أن تكون قادرة على التعامل مع الرسالة دون أن يكون لديها معرفة بمحتوى الرسالة
+                </p>
+            </li>
+        </list>
+    </chapter>
+
+</topic>
