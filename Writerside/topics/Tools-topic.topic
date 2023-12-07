@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       id="Tools-topic" title="الأدوات والتقنيات المستخدمة">
+
+    <title>
+        الأدوات والتقنيات المستخدمة
+    </title>
+    <chapter title="بناء على توصيات &quot;بلانون&quot; سوف نستخدم لغة جافا والأدوات التالية:">
+        <list type="decimal">
+            <li>أولا يجب تنزيل
+                <control>Java sdk</control>
+                والتأكد من الإصدار بأنه احدث أصدار
+            </li>
+            <li>تنزيل
+                <control>Planon sdk</control>
+                ودمجة مع المشروع الذي نعمل عليه
+            </li>
+            <li>لجلب البيانات من خدمات أمازون السحابية يجب أن يكون لدينا اسم مستخدم وكلمة مرور
+                <control>(قد يتطلب الأمر إلى تنزيل AWS CLI)</control>
+            </li>
+            <li>الآن من أجل جلب البيانات من خدمات أمازون وإرسالها إلى &quot;بلانون&quot; يجب إنشاء مشروعين الأول وهو
+                <control>موصل الحدث</control>
+                والثاني من
+                أجل كتابة الدوال وإنشاء هيكليات البيانات
+            </li>
+            <li>
+                <control>JAX-RS RESTfull</control>
+                نقوم أيضا بتنزيل إطار العمل هذا من أجل بناء واجهة برمجة التطبيقات
+            </li>
+            <li>
+                <p>
+                    <control>Layered Architecture</control>
+                    يوجد عدة أنماط لإدارة المشروع لكن سوف نستخدم هذا النمط حيث يحتوي على ثلاث طبقات وهي
+                </p>
+                <list>
+                    <li>
+                        <control>DTO</control>
+                        (Data Transfer Objects) تحتوي على هياكل البيانات وتتعامل مع البيانات لنقلها بين طبقات التطبيق
+                    </li>
+                    <li>
+                        <control>Service Layer</control>
+                        طبقة الخدمة تحتوي على الدوال الخاصة لكل صف برمجي مثل دوال الحذف والإضافة و CRUD
+                    </li>
+                    <li>
+                        <control>Data Access Layer</control>
+                        تستخدم للتواصل مع قاعدة البيانات
+                    </li>
+                </list>
+            </li>
+            <li>
+                <control>Maven Archetype</control>
+                سوف نستخدمه لإدارة التبعيات والمكتبات الخاصة بالمشروع فهو يستخدم مفهوم الأهداف وملف pom.xml
+            </li>
+            <li>
+                <control>jackson, Servlet</control>
+                المكتبات التي يجب استخدامها ضمن المشروع
+            </li>
+        </list>
+    </chapter>
+
+</topic>
