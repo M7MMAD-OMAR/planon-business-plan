@@ -1,0 +1,1 @@
+Link: https://m7mmad-omar.github.io/planon-business-plan/tools-topic.html#ee6a3d19_2
